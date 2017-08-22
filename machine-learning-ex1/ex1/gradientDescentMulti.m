@@ -20,7 +20,7 @@ for iter = 1:num_iters
 theta = theta - (alpha/m) *(X')* (X * theta - y);
 
 
-fprintf('%f %f \n', theta(1), theta(2), theta(3));
+%fprintf('%f %f \n', theta(1), theta(2), theta(3));
 
 
 
@@ -32,7 +32,9 @@ fprintf('%f %f \n', theta(1), theta(2), theta(3));
     % ============================================================
 
     % Save the cost J in every iteration    
-    J_history(iter) = computeCostMulti(X, y, theta);
+J_history(iter) = computeCostMulti(X, y, theta);
+fprintf('%f %f \n', J_history(iter));
+
 
 end
 
