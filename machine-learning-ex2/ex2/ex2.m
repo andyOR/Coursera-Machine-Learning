@@ -23,10 +23,30 @@ clear ; close all; clc
 %  The first two columns contains the exam scores and the third column
 %  contains the label.
 
-data1 = load('X7_features16.txt');
-data2 = load('Y7_16.txt');
-X = data1(:, [1:10]); y = data(:, 1);
+data = load('ex2data1.txt');
+X = data(:, [1, 2]); y = data(:, 3);
 
+%% ==================== Part 1: Plotting ====================
+%  We start the exercise by first plotting the data to understand the 
+%  the problem we are working with.
+
+fprintf(['Plotting data with + indicating (y = 1) examples and o ' ...
+         'indicating (y = 0) examples.\n']);
+
+plotData(X, y);
+
+% Put some labels 
+hold on;
+% Labels and Legend
+xlabel('Exam 1 score')
+ylabel('Exam 2 score')
+
+% Specified in plot order
+legend('Admitted', 'Not admitted')
+hold off;
+
+fprintf('\nProgram paused. Press enter to continue.\n');
+pause;
 
 
 %% ============ Part 2: Compute Cost and Gradient ============
@@ -47,8 +67,20 @@ initial_theta = zeros(n + 1, 1);
 [cost, grad] = costFunction(initial_theta, X, y);
 
 fprintf('Cost at initial theta (zeros): %f\n', cost);
+fprintf('Expected cost (approx): 0.693\n');
 fprintf('Gradient at initial theta (zeros): \n');
 fprintf(' %f \n', grad);
+fprintf('Expected gradients (approx):\n -0.1000\n -12.0092\n -11.2628\n');
+
+% Compute and display cost and gradient with non-zero theta
+test_theta = [-24; 0.2; 0.2];
+[cost, grad] = costFunction(test_theta, X, y);
+
+fprintf('\nCost at test theta: %f\n', cost);
+fprintf('Expected cost (approx): 0.218\n');
+fprintf('Gradient at test theta: \n');
+fprintf(' %f \n', grad);
+fprintf('Expected gradients (approx):\n 0.043\n 2.566\n 2.647\n');
 
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
@@ -68,8 +100,11 @@ options = optimset('GradObj', 'on', 'MaxIter', 400);
 
 % Print theta to screen
 fprintf('Cost at theta found by fminunc: %f\n', cost);
+fprintf('Expected cost (approx): 0.203\n');
 fprintf('theta: \n');
 fprintf(' %f \n', theta);
+fprintf('Expected theta (approx):\n');
+fprintf(' -25.161\n 0.206\n 0.201\n');
 
 % Plot Boundary
 plotDecisionBoundary(theta, X, y);
@@ -103,13 +138,14 @@ pause;
 
 prob = sigmoid([1 45 85] * theta);
 fprintf(['For a student with scores 45 and 85, we predict an admission ' ...
-         'probability of %f\n\n'], prob);
+         'probability of %f\n'], prob);
+fprintf('Expected value: 0.775 +/- 0.002\n\n');
 
 % Compute accuracy on our training set
 p = predict(theta, X);
 
 fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
+fprintf('Expected accuracy (approx): 89.0\n');
+fprintf('\n');
 
-fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
 
