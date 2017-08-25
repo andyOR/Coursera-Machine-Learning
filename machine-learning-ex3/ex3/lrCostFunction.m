@@ -13,13 +13,6 @@ J = 0;
 grad = zeros(size(theta));
 
 % ====================== YOUR CODE HERE ======================
-
-h = sigmoid(X * theta);
-J = (1/m)*sum(-y .* log(h)-(1 - y).*log(1 - h)) + (lambda/(2*m)) * sum(theta(2:end) .^ 2);
-grad(1) = (1/m) *((X'(1,:))*(h- y)); 
-grad(2:end) = (1/m) *((X'(2:end,:))*(h- y)) + (lambda/m).* theta(2:end,:); 
-
-
 % Instructions: Compute the cost of a particular choice of theta.
 %               You should set J to the cost.
 %               Compute the partial derivatives and set grad to the partial
