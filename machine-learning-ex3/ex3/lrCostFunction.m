@@ -30,13 +30,17 @@ grad = zeros(size(theta));
 % Hint: When computing the gradient of the regularized cost function, 
 %       there're many possible vectorized solutions, but one solution
 %       looks like:
+
+J = (1/m) * sum(-y .* log(sigmoid(X * theta)) - (1 - y) .*log(1 - sigmoid(X * theta))) + (lambda/(2*m)) * sum(theta(2:end).^2);
+
 %           grad = (unregularized gradient for logistic regression)
 %           temp = theta; 
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
-
+grad(1) = (1/m) * (X'(1,:)) * (sigmoid(X * theta) - y);
+grad(2:end) = (1/m) * (X'(2:end,:)) * (sigmoid(X * theta) - y) + (lambda/m) * theta(2:end, :);
 
 
 
