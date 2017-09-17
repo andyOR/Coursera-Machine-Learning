@@ -24,10 +24,25 @@ sigma = 0.3;
 %
 
 
+C1=[0.01 0.03 0.1 0.3 1 3 10 30];
+sigma1=[0.01 0.03 0.1 0.3 1 3 10 30];
 
+for i=1:length(C1)
+    for j=1:length(sigma1)
+         C=C1(i);
+         sigma=sigma1(j);
+         model = svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma));
+         predictions=svmPredict(model, Xval);
+             p(i,j)= mean(double(predictions ~= yval));
+              
+    end
+end
 
+minValue = min(min(p));
+[row column] = find(p == minValue);
 
-
+C = C1(row);
+sigma=sigma1(column);
 
 % =========================================================================
 
