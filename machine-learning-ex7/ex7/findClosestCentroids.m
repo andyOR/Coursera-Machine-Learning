@@ -21,8 +21,17 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+m = size(X,1);
 
-
+for p = 1:m
+    dist = zeros(K,1);
+    for q=1:K
+        dist(q,1) = sqrt(sum(power((X(p,:)-centroids(q,:)),2)));
+        
+    end
+    [value row] = min(dist);
+    idx(p) = row;
+end
 
 
 
