@@ -21,7 +21,12 @@ X_rec = zeros(size(Z, 1), size(U, 1));
 %               Notice that U(j, 1:K) is a row vector.
 %               
 
-
+for p = 1:size(Z,1)
+    for q = 1:size(U,1)
+        v = Z(p,:)';
+        X_rec(p,q) = v' * U(q,1:K)';
+    end
+end
 
 % =============================================================
 
