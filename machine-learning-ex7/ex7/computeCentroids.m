@@ -26,7 +26,12 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-
+for p = 1:K
+    row = find(idx == p);
+    sum_tot = sum(X(row,:));
+    centroids(p,:) = (sum_tot)./size(row,1);
+end
+    
 
 
 
