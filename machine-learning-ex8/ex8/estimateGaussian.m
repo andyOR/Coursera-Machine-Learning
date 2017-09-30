@@ -22,7 +22,10 @@ sigma2 = zeros(n, 1);
 %
 
 
-
+mea = [sum(X)/m];
+mu = mea;
+sigma = (sum((X - mea).^2))/m;
+sigma2 = sigma;
 
 
 
