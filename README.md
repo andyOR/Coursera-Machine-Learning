@@ -12,3 +12,9 @@
 
 
 ### 2. Linear regression with multiple variables
+#### In this week, author covered linear regression with multiple input features and best prectices to implement linear regression.
+
+#### Algorithms and datasets used
+#### i. Gradient descent for multiple variables
+#### ii. Feature scaling and learning rate alpha
+#### iii. Normal equation and non invertibility
