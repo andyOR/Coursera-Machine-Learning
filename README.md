@@ -18,3 +18,6 @@
 #### i. Gradient descent for multiple variables
 #### ii. Feature scaling and learning rate alpha
 #### iii. Normal equation and non invertibility
+
+
+### 3. Logistic Regression
