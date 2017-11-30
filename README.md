@@ -21,3 +21,10 @@
 
 
 ### 3. Logistic Regression
+
+#### In this week, author covered logistic regression which is a method for classifying data into discrete outcomes. Example, to classify an email a spam or not spam. It also included application of logistic regression to multi-class classifcation.
+
+#### Algorithms and dataset used
+#### i. Cost function and gradient descent 
+#### ii. Regularization
+#### iii. student chance of admission on results of two exam. 
